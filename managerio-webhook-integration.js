@@ -1,5 +1,7 @@
 /*
- * Manager.io page script: create / update / delete of ANY record type  ->  n8n webhook
+  CREATED BY MOHAMMED BREKY
+
+ * Manager.io page script: create / update / delete of ANY record type  ->   webhook
  * (sales invoices, sales quotes, customers, receipts, ... anything that saves through /<name>-form)
  * Runs in the browser inside Manager's main page, like any other page script / extension.
  *
