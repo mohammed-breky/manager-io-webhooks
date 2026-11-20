@@ -20,9 +20,9 @@ Connect Manager.io to **n8n, Make, Zapier, or your own applications** without mo
 ## Installation
 
 1. Open your Manager.io business.
-2. Navigate to **Settings → Custom Themes / Legacy Browser Extensions** (depending on your Manager.io version).
+2. Navigate to **Settings → Legacy Browser Extensions**.
 3. Create a new browser extension.
-4. Paste the contents of the JavaScript file into the extension editor.
+4. Paste the contents of `managerio-webhook-integration.js` into the extension editor.
 5. Select **Run Everywhere** as the execution scope.
 6. Replace the webhook URL in the script with your own endpoint:
 
@@ -69,7 +69,7 @@ It does **not** transmit:
 
 It only sends the record type, action, GUID, and event metadata.
 
-The GUID is an internal Manager.io record identifier and can be used by your receiving application to retrieve the corresponding record through the Manager.io API.
+The GUID is an internal Manager.io record identifier.
 
 ## Important limitations
 
@@ -78,6 +78,7 @@ The GUID is an internal Manager.io record identifier and can be used by your rec
 - Requires a reachable webhook endpoint.
 - Delivery uses a local browser queue, so pending events depend on the browser's local storage remaining available.
 - The receiving application should implement event deduplication using `event_id`.
+- **Create-event detection:** When a new record is saved, the script relies on Manager.io redirecting to the newly created record's view page to identify its GUID. If Manager.io redirects back to a list or another page instead, the script cannot resolve the GUID and the create event will not be sent.
 
 ## Security
 
